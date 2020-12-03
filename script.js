@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function ()
             spanElement.addEventListener('click', toggleImage);
 
             var imgElement = document.createElement('img');
-            imgElement.src = `./images/${finalImage}`;
+            imgElement.src = `./Images/${finalImage}`;
 
             spanElement.appendChild(imgElement);
 
