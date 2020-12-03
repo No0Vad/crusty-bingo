@@ -192,7 +192,7 @@ const checkForWinner = function ()
 const winnerFound = function ()
 {
     done = true;
-    var audio = new Audio('blelele.mp3');
+    var audio = new Audio('./blelele.mp3');
     audio.volume = 0.75;
     audio.play();
 
