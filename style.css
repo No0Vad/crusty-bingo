@@ -1,0 +1,43 @@
+body {
+    background: white;
+    color: black;
+}
+
+#bingo {
+    margin: 0 auto;
+    width: 651px;
+}
+
+#header span, #footer span {
+    display: inline-block;
+    width: 129px;
+    font-size: 50px;
+    text-align: center;
+}
+
+#items {
+    display: grid;
+    grid-template-columns: 129px 129px 129px 129px 129px;
+    grid-template-rows: 129px 129px 129px 129px 129px;
+    gap: 1px;
+    padding: 1px;
+    background: black;
+}
+
+#items span {
+    position: relative;
+}
+
+#items span.active::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 255, 0.35);
+}
+
+.center {
+    text-align: center;
+}
