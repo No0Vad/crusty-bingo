@@ -1,10 +1,6 @@
 body {
-    background: white;
+    background: #ececec;
     color: black;
-}
-
-body.winner {
-    background-color: rgb(225, 225, 255);
 }
 
 button {

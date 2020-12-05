@@ -220,9 +220,6 @@ const winnerFound = function ()
     audio.play();
 
     resetBingo(false);
-
-
-    document.body.classList.add('winner');
 };
 
 
