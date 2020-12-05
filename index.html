@@ -13,8 +13,12 @@
 </head>
 
 <body>
-
     <div id="bingo">
+        <p class="commands">
+            <button id="setFullHouse_No" onclick="setModeFullhouse(false)" title="Normal bingo rules">Normal mode</button>
+            <button id="setFullHouse_Yes" onclick="setModeFullhouse(true)" title="All tiles must be selected">Full House mode</button>
+        </p>
+
         <div id="header">
             <span>C</span><span>R</span><span>U</span><span>S</span><span>T</span>
         </div>
@@ -24,11 +28,11 @@
         <div id="footer">
             <span>B</span><span>I</span><span>N</span><span>G</span><span>O</span>
         </div>
+        
+        <p class="center">
+            <button onclick="resetBingo(true)">Reset</button>
+        </p>
     </div>
-
-    <p class="center">
-        <button onclick="resetBingo(true)">Reset</button>
-    </p>
 </body>
 
 </html>

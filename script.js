@@ -1,8 +1,10 @@
-const middleIndex = 12;
 const xMatrix = 5;
 const yMatrix = 5;
+const middleIndex = ((xMatrix * yMatrix) - 1) / 2;
+
 const matrix = [];
 const selectClass = 'active';
+const storageNameIsFullHouse = 'CrustBingoRandomIsFullHouse';
 const storageNameRandom = 'CrustBingoRandomIndexes';
 const storageNameSelected = 'CrustBingoRandomSelected';
 
@@ -37,6 +39,7 @@ const images = [
 let randomIndexs = [];
 let finalImages = [];
 let done = false;
+let isFullHouseMode = localStorage.getItem(storageNameIsFullHouse) === '1';
 
 let savedRandomIndex = localStorage.getItem(storageNameRandom);
 if (savedRandomIndex != null)
@@ -128,6 +131,26 @@ const saveSelection = function ()
 
 const checkForWinner = function ()
 {
+    if (isFullHouseMode)
+    {
+        for (let x = 0; x < xMatrix; x++)
+        {
+            for (let y = 0; y < yMatrix; y++)
+            {
+                /** @type {HTMLSpanElement} */
+                var element = matrix[x][y];
+
+                if (!element.classList.contains(selectClass) && element.dataset.id - 0 !== middleIndex)
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+
     // Check horizontal and vertical
     for (let x = 0; x < xMatrix; x++)
     {
@@ -197,6 +220,17 @@ const winnerFound = function ()
     audio.play();
 
     resetBingo(false);
+
+
+    document.body.classList.add('winner');
+};
+
+
+const setModeFullhouse = function (state)
+{
+    localStorage.setItem(storageNameIsFullHouse, state ? '1' : '');
+
+    resetBingo(true);
 };
 
 
@@ -209,11 +243,13 @@ const resetBingo = function (reload)
     {
         window.location = window.location;
     }
-}
+};
 
 
 document.addEventListener("DOMContentLoaded", function ()
 {
+    document.querySelector(`#setFullHouse_${(isFullHouseMode ? 'Yes' : 'No')}`).classList.add(selectClass);
+
     const itemsElement = document.querySelector('#items');
     let savedSelectionIds = [];
 
@@ -238,6 +274,7 @@ document.addEventListener("DOMContentLoaded", function ()
 
             var imgElement = document.createElement('img');
             imgElement.src = `./Images/${finalImage}`;
+            imgElement.draggable = false;
 
             spanElement.appendChild(imgElement);
 

@@ -3,9 +3,37 @@ body {
     color: black;
 }
 
+body.winner {
+    background-color: rgb(225, 225, 255);
+}
+
+button {
+    border: 1px solid grey;
+    background: #ebebeb;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #cdcdcd;
+}
+
+button.active {
+    background: #ffe3a6;
+}
+
+button.active:hover {
+    background: #fac34b;
+}
+
 #bingo {
     margin: 0 auto;
     width: 651px;
+}
+
+.commands {
+    display: flex;
+    justify-content: space-between;
 }
 
 #header span, #footer span {
